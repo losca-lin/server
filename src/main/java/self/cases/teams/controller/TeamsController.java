@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import self.cases.teams.entity.Form;
 import self.cases.teams.entity.Users;
 import self.cases.teams.handle.CacheHandle;
 import self.cases.teams.service.UsersService;
@@ -42,6 +43,15 @@ public class TeamsController extends BaseController {
 
     @Autowired
     private TeamsService teamsService;
+
+
+    @GetMapping("/count")
+    @ResponseBody
+    public R count(){
+        List<Form> list = teamsService.count();
+        return R.successData(list);
+    }
+
 
     @RequestMapping("")
     public String index() {
@@ -140,4 +150,5 @@ public class TeamsController extends BaseController {
 
         return R.success();
     }
+
 }

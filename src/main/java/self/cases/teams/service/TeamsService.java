@@ -1,5 +1,6 @@
 package self.cases.teams.service;
 
+import self.cases.teams.entity.Form;
 import self.cases.teams.msg.PageData;
 
 import self.cases.teams.entity.Teams;
@@ -33,4 +34,6 @@ public interface TeamsService extends BaseService<Teams, String> {
 	 * @return
 	 */	
 	public PageData getPageInfo(Long pageIndex, Long pageSize, Teams teams);
+
+    List<Form> count();
 }

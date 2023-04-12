@@ -182,6 +182,20 @@ public class TeamsServiceImpl implements TeamsService {
         return parsePage(page);
     }
 
+    @Override
+    public List<Form> count() {
+        List<Teams> teams = teamsDao.selectList(null);
+        List<Form> forms = new ArrayList<>();
+        for (Teams team : teams) {
+            TeamTypes types = teamTypesDao.selectById(team.getTypeId());
+            Form form = new Form();
+            form.setName(team.getName()+","+types.getName());
+            form.setCount(team.getTotal());
+            forms.add(form);
+        }
+        return forms;
+    }
+
     /**
      * 转化分页查询的结果
      */
