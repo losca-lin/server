@@ -64,7 +64,7 @@ public interface ApplyLogsDao extends BaseMapper<ApplyLogs> {
             "t.name teamName, u.name userName, u.gender userGender, u.age userAge, u.phone userPhone,t1.name  typeName " +
             "FROM apply_logs al, teams t, users u,team_types t1 " +
             "<where> " +
-            "al.user_id = u.id AND al.team_id = t.id " +
+            "al.user_id = u.id AND al.team_id = t.id and t.type_id = t1.id " +
             "<if test='teamName != null and teamName.trim() != &quot;&quot; '>" +
             "AND t.name LIKE CONCAT('%', #{teamName}, '%') and t.type_id = t1.id " +
             "</if>" +
