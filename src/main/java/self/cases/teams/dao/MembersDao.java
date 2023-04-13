@@ -67,7 +67,7 @@ public interface MembersDao extends BaseMapper<Members> {
             "AND u.name LIKE CONCAT('%', #{userName}, '%') " +
             "</if>" +
             "</where>" +
-            "ORDER BY m.create_time DESC" +
+            "group by u.name,t.name ORDER BY m.create_time DESC" +
             "</script>")
     public Page<Map<String, Object>> qryPageByManId(Page<Map<String, Object>> page,
                                                     @Param("manId") String manId,
